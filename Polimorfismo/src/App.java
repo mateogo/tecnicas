@@ -3,6 +3,10 @@ import printingservice.PrintJob;
 import user.*;
 
 public class App {
+    static private Usuario usuarioLogueado(){
+        return  new Usuario("Pedro");
+    }
+
     public static void main(String[] args) throws Exception {
         System.out.println("=========================================================");
         System.out.println("Variante 3: Invocando al servicio de impresión");
@@ -10,9 +14,10 @@ public class App {
         System.out.println("==========================================================");
 
         PlainTextDocument doc = new PlainTextDocument();
-        doc.setText("Hola Mundo, soy un documento de texto plano");
+        doc.setText("Hola Mundo, la impresora efectiva depende del usuario");
 
-        Usuario u = new Usuario("Marité");
+        // suponemos que este es el usuario logueado
+        Usuario u = App.usuarioLogueado();
         
         PrintJob pr = new PrintJob();
         Boolean status = pr.print(doc, u);
